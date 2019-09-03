@@ -15,18 +15,20 @@ data = pd.read_csv("linear.csv")
 x = data["Square-meter"]
 y = data["price"]
 
-x = x.reshape(99,1)
-y = y.reshape(99,1)
 
-lineerregresyon = lr() # Call the linear regression
+x = x.values.reshape(99,1)
+y = y.values.reshape(99,1)
 
-lineerregresyon.fit(x,y) 
 
-lineerregresyon.predict(x) #x'e göre, yani metrekareye göre ev fiyatlarını tahmin edeceğiz.
+linearRegression = lr() # Call the linear regression
 
-m = lineerregresyon.coef_ # Coefficient - yani katsayı, bu komutla eğimimizi
+linearRegression.fit(x,y) 
+
+linearRegression.predict(x) #x'e göre, yani metrekareye göre ev fiyatlarını tahmin edeceğiz.
+
+m = linearRegression.coef_ # Coefficient - yani katsayı, bu komutla eğimimizi
                           # Yani m i buluyoruz.
-b= lineerregresyon.intercept_ # Intercept - b dir. yani y = mx+b 'de x'e sıfır 
+b = linearRegression.intercept_ # Intercept - b dir. yani y = mx+b 'de x'e sıfır 
                               # verdiğimizde kalan değer.
 
 a = np.arange(150)
@@ -37,8 +39,8 @@ plt.show()
 
 
 
-print('Slope: ', lineerregresyon.coef_)
-print('Intersection Y: ', lineerregresyon.intercept_)
+print('Slope: ', linearRegression.coef_)
+print('Intersection Y: ', linearRegression.intercept_)
 
 
 print("Equation")
